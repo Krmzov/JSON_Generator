@@ -6,20 +6,24 @@ import java.awt.event.ActionListener;
 import java.io.File;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 public class Frame implements ActionListener {
-	JButton b,b1 ; 
+	JButton b,b1,b2,b3; 
 	JTextField t1,t2;
-	JRadioButton r,r1,r2,r3,r4;
+	JCheckBox check1 , check2; 
+	JComboBox cb;
 	File file;
 	JFileChooser fileChooser;
 	String str1,str2;
 	Frame()
 		{
+		///TextFIELDS
 	JFrame f = new JFrame("Generete JSON schema doc");
 	t1 = new JTextField("JSON schema Path");
 	t1.setHorizontalAlignment(JTextField.CENTER);
@@ -28,43 +32,48 @@ public class Frame implements ActionListener {
 	t2.setHorizontalAlignment(JTextField.CENTER);
 	t2.setBounds(90,120 ,220,30);
 	
+	
+	/// comboBox
+	String i[]= {"Text" , "HTML", "JSON"};
+	cb = new JComboBox(i);
+	cb.setBounds(90 , 85, 90,20);
+	
+	///Checkbox
+	check1 = new JCheckBox("Only required content");
+	check1.setBounds(90 , 150 , 150 ,30);
+	check2 = new JCheckBox("Include Examples");
+	check2.setBounds(90 , 175 ,150 , 30 );
+	
+	///Buttons
 	b = new JButton("Browse");
 	b.addActionListener(this);
 	b.setBounds(350, 50, 90, 30);
-	b.setHorizontalAlignment(JButton.CENTER);
-	
+
 	b1 = new JButton("Browse");
 	b1.addActionListener(this);
 	b1.setBounds(350, 120, 90, 30);
-	b1.setHorizontalAlignment(JButton.CENTER);
+	
+	
+	b2 = new JButton("Generate");
+	b2.setBounds(100, 220, 90 ,30);
+	b3 = new JButton("Cancel");
+	b3.setBounds(200, 220, 90, 30);
 
 	
-	 r = new JRadioButton("Text");
-	 r1 = new JRadioButton("JSON");
-	 r2 = new JRadioButton("HTML");
-	 r3 = new JRadioButton("Only Req Content");
-	 r4 = new JRadioButton("Include Examples");
 	
-	
-	r.setBounds(110, 80, 50, 30);
-	r1.setBounds(165, 80, 60,30 );
-	r2.setBounds(230 , 80, 60, 30);
-	r3.setBounds(90, 150, 130, 30);
-	r4.setBounds(220, 150, 130, 30);
-	
-	f.add(r);
-	f.add(r1);
-	f.add(r2);
-	f.add(r3);
-	f.add(r4);
 	f.add(b);
 	f.add(b1);
+	f.add(b2);
+	f.add(b3);
 	f.add(t1);
 	f.add(t2);
-	
-	f.setSize(500, 400);
+	f.add(cb);
+	f.add(check1);
+	f.add(check2);
+	f.setSize(500, 350);
 	f.setLayout(null);
 	f.setVisible(true);
+	f.setResizable(false);
 	
  }
 		public void actionPerformed(ActionEvent e) {
